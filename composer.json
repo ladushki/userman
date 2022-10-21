@@ -1,0 +1,45 @@
+{
+  "name": "volga/userman",
+  "description": "User Man",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Larissa Bobkova Lagudin",
+      "email": "larissa.bobkova@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "ext-password": "*",
+    "illuminate/database": "10.x-dev"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.13",
+    "php-parallel-lint/php-parallel-lint": "^1.2",
+    "phpunit/phpunit": "^10.0",
+    "roave/security-advisories": "dev-latest"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Volga\\Userman\\": "src/",
+      "Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    }
+  },
+  "scripts": {
+    "code-standards": [
+      "vendor/bin/parallel-lint --exclude vendor .",
+      "composer normalize --working-dir=. --dry-run"
+    ],
+    "fix": [
+      "vendor/bin/php-cs-fixer fix src/",
+      "vendor/bin/phpcbf -n --standard=sniffs.xml src/"
+    ],
+    "test": "./vendor/bin/phpunit --testdox --colors=always"
+  }
+}
